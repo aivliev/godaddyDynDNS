@@ -8,6 +8,7 @@ Before adding the cronjob, I put the script in /usr/local/bin, chowned it to nob
 I then ran touch /var/log/updatedomain.log and chowned it to nobody.
  
 Finally I edited nobody's crontab using crontab -e -u nobody and set it up as follows:
+```
 #
 SHELL=/bin/sh
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/pkg/bin
@@ -17,6 +18,7 @@ CRON_WITHIN=240
 #minute hour    mday    month   wday    command
 #
 */15    *       *       *       *       /usr/local/bin/updatedomain www mydomain.com >> /var/log/updatedomain.log
+```
 You can, of course, substitute www for @ to update the actual domain's A record and add more lines to the crontab to update the A records of various different domains.
  
 I hope this helps somebody. Smiley Very Happy
