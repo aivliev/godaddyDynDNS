@@ -45,7 +45,7 @@ ret=$(curl -s GET "http://ipinfo.io/json")
 currentIp=$(echo $ret | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b")
 echo $name"."$domain": $(date): currentIp:" $currentIp
 
- if [ $dnsIp != $currentIp ];
+ if [[ $dnsIp != $currentIp ]];
  then
         echo $name"."$domain": $(date): IPs not equal. Updating."
         request='{"data":"'$currentIp'","ttl":3600}'
